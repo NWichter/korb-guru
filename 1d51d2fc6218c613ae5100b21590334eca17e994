@@ -1,0 +1,23 @@
+website/package.json
+  b47e0e4580cfc874 1-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15",
+  "base_commit_sha": "1d51d2fc6218c613ae5100b21590334eca17e994",
+  "prompts": {
+    "b47e0e4580cfc874": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ad2aadb9-83ce-4a97-9fe0-1c24c7f9d170",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Niklas Wichter <niklaswichter@gmail.com>",
+      "messages": [],
+      "total_additions": 21,
+      "total_deletions": 0,
+      "accepted_lines": 21,
+      "overriden_lines": 0
+    }
+  }
+}
