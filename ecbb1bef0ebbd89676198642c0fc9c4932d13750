@@ -1,0 +1,25 @@
+db/Dockerfile
+  b47e0e4580cfc874 1-3
+qdrant/Dockerfile
+  b47e0e4580cfc874 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15",
+  "base_commit_sha": "ecbb1bef0ebbd89676198642c0fc9c4932d13750",
+  "prompts": {
+    "b47e0e4580cfc874": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ad2aadb9-83ce-4a97-9fe0-1c24c7f9d170",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Niklas Wichter <niklaswichter@gmail.com>",
+      "messages": [],
+      "total_additions": 4,
+      "total_deletions": 0,
+      "accepted_lines": 4,
+      "overriden_lines": 0
+    }
+  }
+}
