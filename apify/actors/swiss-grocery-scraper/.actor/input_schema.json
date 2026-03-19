@@ -1,0 +1,52 @@
+{
+  "title": "Swiss Grocery Scraper Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "retailers": {
+      "title": "Retailers",
+      "type": "array",
+      "description": "Which retailers to scrape (aldi, migros, coop, denner, lidl)",
+      "items": {
+        "type": "string"
+      },
+      "default": ["aldi", "migros", "coop", "denner", "lidl"],
+      "sectionCaption": "Scraping Options",
+      "sectionDescription": "Configure which retailers and region to scrape.",
+      "editor": "stringList"
+    },
+    "region": {
+      "title": "Region",
+      "type": "string",
+      "description": "Swiss region for region-specific offers",
+      "enum": ["zurich", "bern", "basel"],
+      "default": "zurich",
+      "editor": "select"
+    },
+    "maxItems": {
+      "title": "Max Items",
+      "type": "integer",
+      "description": "Maximum items to scrape per retailer",
+      "default": 200,
+      "minimum": 1,
+      "maximum": 1000,
+      "editor": "number"
+    },
+    "webhookUrl": {
+      "title": "Webhook URL",
+      "type": "string",
+      "description": "URL to POST notification after scraping completes",
+      "sectionCaption": "Webhook Configuration",
+      "sectionDescription": "Optional webhook to notify your backend when scraping finishes.",
+      "editor": "textfield"
+    },
+    "webhookApiKey": {
+      "title": "Webhook API Key",
+      "type": "string",
+      "description": "API key for webhook Authorization header",
+      "isSecret": true,
+      "editor": "textfield"
+    }
+  },
+  "required": ["retailers"]
+}

@@ -1,0 +1,167 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Korb Guru — Smart grocery shopping. Better cooking.',
+  description = 'The Swiss app for smart meal planning, price comparison, and shared shopping lists. Powered by AI.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://korb-guru.sorevo.de" />
+    <meta property="og:site_name" content="Korb Guru" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen antialiased bg-[#0a0a0a] text-white font-[Inter,system-ui,sans-serif] m-0 p-0">
+    <slot />
+    <script is:inline>
+      (function() {
+        const TRANSLATIONS = {
+          en: {
+            "hero.badge": "GenAI Zurich Hackathon 2026",
+            "hero.h1.1": "Smart grocery",
+            "hero.h1.2": "shopping.",
+            "hero.h1.3": "Better cooking.",
+            "hero.desc": "Meal planning, price comparison, and shared shopping lists — with over 100,000 products from Migros, Coop, Aldi, Denner & Lidl.",
+            "hero.cta1": "Discover",
+            "hero.cta2": "How it works",
+            "stats.products": "Products",
+            "stats.recipes": "Recipes",
+            "stats.stores": "Stores",
+            "stats.retailers": "Retailers",
+            "stats.footer": "Real Swiss product data via",
+            "stats.footer2": "Prices from Migros, Coop, Aldi, Denner & Lidl",
+            "features.badge": "Features",
+            "features.title": "Everything you need",
+            "features.desc": "From product search to optimized shopping routes — korb.guru combines everything in one app.",
+            "f1.title": "Hybrid Product Search",
+            "f1.desc": "Semantic and keyword search powered by Qdrant. Find products even when you don't know the exact name.",
+            "f2.title": "Price Comparison",
+            "f2.desc": "Compare prices across 5 retailers (Migros, Coop, Aldi, Denner, Lidl) at a glance. Savings calculation included.",
+            "f3.title": "Smart Meal Planning",
+            "f3.desc": "AI-powered recipe discovery with swipe interface. AI Recipe Discovery for every day.",
+            "f4.title": "Shopping Routes",
+            "f4.desc": "OSRM-based route planning for pedestrians, cyclists, and drivers to the nearest store.",
+            "f5.title": "Share Household",
+            "f5.desc": "Shared shopping lists, polls, and budget management for the whole household.",
+            "f6.title": "Auto Shopping Lists",
+            "f6.desc": "From recipe to shopping list in one tap. Never forget ingredients again.",
+            "how.badge": "How it works",
+            "how.title": "Easy as 1-2-3",
+            "how.desc": "Three steps from recipe to finished shopping.",
+            "how.s1.title": "Search",
+            "how.s1.desc": "Find products and recipes with intelligent search across Migros, Coop, Aldi, Denner & Lidl.",
+            "how.s2.title": "Plan",
+            "how.s2.desc": "Create your weekly plan and automatically generate shopping lists.",
+            "how.s3.title": "Shop",
+            "how.s3.desc": "Optimized route, best prices, shared list — shopping has never been easier.",
+            "tech.badge": "Technology",
+            "tech.title": "Tech Stack",
+            "tech.desc": "Modern technologies for a seamless experience.",
+            "cta.title": "Ready to shop smarter?",
+            "cta.desc": "korb.guru makes meal planning and grocery shopping in Switzerland easier than ever.",
+            "cta.btn": "Get started",
+            "footer.built": "Built at GenAI Zurich Hackathon 2026",
+          },
+          de: {
+            "hero.badge": "GenAI Zurich Hackathon 2026",
+            "hero.h1.1": "Intelligent",
+            "hero.h1.2": "einkaufen.",
+            "hero.h1.3": "Besser kochen.",
+            "hero.desc": "Meal Planning, Preisvergleich und gemeinsame Einkaufslisten — mit über 100'000 Produkten von Migros, Coop, Aldi, Denner & Lidl.",
+            "hero.cta1": "Entdecken",
+            "hero.cta2": "So funktioniert's",
+            "stats.products": "Produkte",
+            "stats.recipes": "Rezepte",
+            "stats.stores": "Filialen",
+            "stats.retailers": "Retailer",
+            "stats.footer": "Echte Schweizer Produktdaten via",
+            "stats.footer2": "Preise von Migros, Coop, Aldi, Denner & Lidl",
+            "features.badge": "Features",
+            "features.title": "Alles, was du brauchst",
+            "features.desc": "Von der Produktsuche bis zur optimierten Einkaufsroute — korb.guru vereint alles in einer App.",
+            "f1.title": "Hybride Produktsuche",
+            "f1.desc": "Semantische und Keyword-Suche powered by Qdrant. Finde Produkte, auch wenn du den genauen Namen nicht kennst.",
+            "f2.title": "Preisvergleich",
+            "f2.desc": "Vergleiche Preise bei 5 Retailer (Migros, Coop, Aldi, Denner, Lidl) auf einen Blick. Savings-Berechnung inklusive.",
+            "f3.title": "Smarte Menüplanung",
+            "f3.desc": "KI-gestützte Rezeptentdeckung mit Swipe-Interface. AI Recipe Discovery für jeden Tag.",
+            "f4.title": "Einkaufsrouten",
+            "f4.desc": "OSRM-basierte Routenplanung für Fussgänger, Velofahrer und Autofahrer zum nächsten Laden.",
+            "f5.title": "Haushalt teilen",
+            "f5.desc": "Gemeinsame Einkaufslisten, Abstimmungen und Budgetverwaltung für den ganzen Haushalt.",
+            "f6.title": "Auto-Einkaufslisten",
+            "f6.desc": "Vom Rezept direkt zur Einkaufsliste. Nie wieder Zutaten vergessen.",
+            "how.badge": "Wie es funktioniert",
+            "how.title": "So einfach geht's",
+            "how.desc": "In drei Schritten vom Rezept zum fertigen Einkauf.",
+            "how.s1.title": "Suchen",
+            "how.s1.desc": "Finde Produkte und Rezepte mit intelligenter Suche über Migros, Coop, Aldi, Denner & Lidl.",
+            "how.s2.title": "Planen",
+            "how.s2.desc": "Stelle deinen Wochenplan zusammen und lasse automatisch Einkaufslisten generieren.",
+            "how.s3.title": "Einkaufen",
+            "how.s3.desc": "Optimierte Route, beste Preise, geteilte Liste — einkaufen war nie so einfach.",
+            "tech.badge": "Technologie",
+            "tech.title": "Tech Stack",
+            "tech.desc": "Moderne Technologien für ein nahtloses Erlebnis.",
+            "cta.title": "Bereit, intelligenter einzukaufen?",
+            "cta.desc": "korb.guru macht Meal Planning und Einkaufen in der Schweiz so einfach wie nie zuvor.",
+            "cta.btn": "Jetzt starten",
+            "footer.built": "Built at GenAI Zurich Hackathon 2026",
+          }
+        };
+
+        function setLang(lang) {
+          localStorage.setItem('korb-lang', lang);
+          document.documentElement.lang = lang;
+          const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
+          document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key]) el.textContent = t[key];
+          });
+          // Update toggle buttons
+          document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+            const btnLang = btn.getAttribute('data-lang-btn');
+            if (btnLang === lang) {
+              btn.classList.add('bg-white/20', 'text-white');
+              btn.classList.remove('text-white/40');
+            } else {
+              btn.classList.remove('bg-white/20', 'text-white');
+              btn.classList.add('text-white/40');
+            }
+          });
+        }
+
+        // Init on load
+        const saved = localStorage.getItem('korb-lang') || 'en';
+        document.addEventListener('DOMContentLoaded', () => setLang(saved));
+        // Expose for toggle buttons
+        window.__setLang = setLang;
+      })();
+    </script>
+  </body>
+</html>

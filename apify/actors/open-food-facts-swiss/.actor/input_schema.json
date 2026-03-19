@@ -1,0 +1,38 @@
+{
+  "title": "Swiss Open Food Facts Importer Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "maxProducts": {
+      "title": "Max Products",
+      "type": "integer",
+      "description": "Maximum number of products to import",
+      "default": 5000,
+      "minimum": 1,
+      "maximum": 50000,
+      "sectionCaption": "Import Options",
+      "sectionDescription": "Configure which products to import from Open Food Facts.",
+      "editor": "number"
+    },
+    "categories": {
+      "title": "Categories",
+      "type": "array",
+      "description": "Filter by Open Food Facts category tags (e.g. en:dairy, en:beverages). Leave empty for all.",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "editor": "stringList"
+    },
+    "minCompleteness": {
+      "title": "Min Completeness (%)",
+      "type": "integer",
+      "description": "Minimum product completeness score (0-100). Products below this threshold are skipped.",
+      "default": 50,
+      "minimum": 0,
+      "maximum": 100,
+      "editor": "number"
+    }
+  },
+  "required": []
+}

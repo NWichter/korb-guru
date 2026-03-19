@@ -1,0 +1,11 @@
+{
+  "actorSpecification": 1,
+  "name": "shopping-agent",
+  "title": "Korb Shopping Agent",
+  "description": "AI shopping agent that orchestrates grocery search, Qdrant retrieval, and LLM-powered recommendations for Swiss grocery shopping.",
+  "version": "0.1",
+  "dockerfile": "./Dockerfile",
+  "input": "./input_schema.json",
+  "buildTag": "latest",
+  "storages": {}
+}

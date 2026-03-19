@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="248" fill="#DC2626"/>
+
+  <!-- Shopping basket body -->
+  <path d="M128 208h256l-32 160H160z" fill="none" stroke="white" stroke-width="20" stroke-linejoin="round"/>
+
+  <!-- Basket handle -->
+  <path d="M176 208c0-64 32-96 80-96s80 32 80 96" fill="none" stroke="white" stroke-width="20" stroke-linecap="round"/>
+
+  <!-- Basket grid lines -->
+  <line x1="208" y1="224" x2="192" y2="352" stroke="white" stroke-width="12" stroke-linecap="round" opacity="0.6"/>
+  <line x1="256" y1="224" x2="256" y2="352" stroke="white" stroke-width="12" stroke-linecap="round" opacity="0.6"/>
+  <line x1="304" y1="224" x2="320" y2="352" stroke="white" stroke-width="12" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- AI sparkle -->
+  <g transform="translate(360, 140)">
+    <path d="M0-24L6-6L24 0L6 6L0 24L-6 6L-24 0L-6-6z" fill="white" opacity="0.9"/>
+  </g>
+  <g transform="translate(400, 180) scale(0.5)">
+    <path d="M0-24L6-6L24 0L6 6L0 24L-6 6L-24 0L-6-6z" fill="white" opacity="0.7"/>
+  </g>
+</svg>

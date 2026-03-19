@@ -1,0 +1,5 @@
+Alembic migrations for Korb API (Postgres). Single source of truth for schema.
+
+Why Alembic: industry standard for Python/Postgres outside Django; versioned upgrades/downgrades, transactional DDL, optional autogenerate from SQLAlchemy. See [Database guide](../../../.docs/guides/database.md) (section “Postgres migrations: why Alembic?”) for comparison with Flyway, Atlas, raw SQL.
+
+Commands (from repo root): pnpm db:migrate (apply), pnpm db:migrate:generate "message" (new revision from models when target_metadata is set). From apps/api: uv run alembic revision -m "add_foo" then edit versions/, uv run alembic upgrade head.

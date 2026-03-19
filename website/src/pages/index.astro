@@ -1,0 +1,472 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(220, 38, 38, 0.6); }
+    }
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-fade-up { animation: fade-up 0.8s ease-out both; }
+    .animate-fade-up-delay-1 { animation: fade-up 0.8s ease-out 0.15s both; }
+    .animate-fade-up-delay-2 { animation: fade-up 0.8s ease-out 0.3s both; }
+    .animate-fade-up-delay-3 { animation: fade-up 0.8s ease-out 0.45s both; }
+    .animate-shimmer {
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-strong {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+
+  <main class="overflow-hidden">
+
+    <!-- ========== HERO ========== -->
+    <section class="relative min-h-screen flex items-start justify-center overflow-hidden">
+      <!-- Background -->
+      <div class="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a0a0a] to-[#0a0a0a]"></div>
+      <!-- Glow orbs -->
+      <div class="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-red-600/10 rounded-full blur-[120px]"></div>
+      <div class="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-red-800/8 rounded-full blur-[100px]"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/[0.03]"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] rounded-full border border-white/[0.02]"></div>
+
+      <!-- Grid pattern overlay -->
+      <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+      <div class="relative z-10 container max-w-7xl mx-auto px-6 py-6 md:py-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <!-- Left: Text -->
+          <div class="flex flex-col gap-5 animate-fade-up">
+            <div class="inline-flex items-center gap-2 glass rounded-full px-3 py-1.5 text-[10px] font-semibold tracking-wide text-red-300 w-fit">
+              <svg class="w-3.5 h-2.5" viewBox="0 0 32 24"><rect width="32" height="24" rx="2" fill="#D52B1E"/><path d="M14 6h4v5h5v4h-5v5h-4v-5H9v-4h5V6z" fill="white"/></svg>
+              <span data-i18n="hero.badge">GenAI Zurich Hackathon 2026</span>
+            </div>
+            <!-- Language toggle -->
+            <div class="inline-flex items-center gap-1 glass rounded-full px-1 py-1 w-fit">
+              <button data-lang-btn="en" onclick="window.__setLang('en')" class="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 text-white transition">EN</button>
+              <button data-lang-btn="de" onclick="window.__setLang('de')" class="px-3 py-1 rounded-full text-xs font-semibold text-white/40 transition">DE</button>
+            </div>
+            <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.95]">
+              <span data-i18n="hero.h1.1">Smart grocery</span>
+              <br />
+              <span data-i18n="hero.h1.2">shopping.</span>
+              <br />
+              <span class="bg-gradient-to-r from-red-500 to-red-400 bg-clip-text text-transparent" data-i18n="hero.h1.3">Better cooking.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-white/50 max-w-lg leading-relaxed animate-fade-up-delay-1" data-i18n="hero.desc">
+              Meal planning, price comparison, and shared shopping lists — with over 100,000 products from Migros, Coop, Aldi, Denner & Lidl.
+            </p>
+            <div class="flex flex-wrap gap-4 mt-4 animate-fade-up-delay-2">
+              <a
+                href="#features"
+                class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl px-7 py-3.5 text-sm transition-all duration-300 shadow-lg shadow-red-600/25 hover:shadow-red-500/40 hover:-translate-y-0.5"
+              >
+                <span data-i18n="hero.cta1">Discover</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </a>
+              <a
+                href="#how-it-works"
+                class="inline-flex items-center gap-2 glass hover:bg-white/10 text-white font-semibold rounded-xl px-7 py-3.5 text-sm transition-all duration-300"
+              >
+                <span data-i18n="hero.cta2">How it works</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: iPhone Mockup -->
+          <div class="flex justify-center lg:justify-end animate-fade-up-delay-3">
+            <div class="animate-float">
+              <div class="relative w-[280px] h-[580px] glass-strong rounded-[3rem] shadow-2xl shadow-red-900/20 p-2.5" style="animation: pulse-glow 4s ease-in-out infinite;">
+                <!-- Dynamic Island -->
+                <div class="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-20"></div>
+                <!-- Screen -->
+                <div class="w-full h-full bg-gradient-to-b from-[#111] to-[#0a0a0a] rounded-[2.5rem] overflow-hidden flex flex-col">
+                  <!-- Status bar area -->
+                  <div class="h-14 shrink-0"></div>
+
+                  <!-- App header -->
+                  <div class="px-5 pb-3 flex items-center justify-between">
+                    <div>
+                      <div class="text-[13px] font-bold text-white tracking-tight">korb.guru</div>
+                      <div class="text-[8px] font-bold text-red-500 uppercase tracking-[0.15em]">Smart Shopping</div>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+                      <span class="text-[14px]">🛒</span>
+                    </div>
+                  </div>
+
+                  <!-- Mock search bar -->
+                  <div class="mx-5 mb-4">
+                    <div class="bg-white/[0.06] border border-white/[0.08] rounded-xl px-3.5 py-2.5 flex items-center gap-2">
+                      <svg class="w-3.5 h-3.5 text-white/30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                      <span class="text-white/25 text-[11px]">Produkt suchen...</span>
+                    </div>
+                  </div>
+
+                  <!-- Mock product list -->
+                  <div class="px-5 space-y-2.5 flex-1">
+                    <div class="bg-white/[0.04] border border-white/[0.06] rounded-xl p-3 flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <span class="text-lg">🥐</span>
+                        <div>
+                          <div class="text-[11px] font-semibold text-white/90">Bio Gipfeli 2 Stk</div>
+                          <div class="text-[9px] text-white/30">Migros · Naturaplan</div>
+                        </div>
+                      </div>
+                      <span class="text-[10px] text-red-400 font-mono font-bold">CHF 0.95</span>
+                    </div>
+                    <div class="bg-white/[0.04] border border-white/[0.06] rounded-xl p-3 flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <span class="text-lg">🧀</span>
+                        <div>
+                          <div class="text-[11px] font-semibold text-white/90">Gruyère AOP 200g</div>
+                          <div class="text-[9px] text-white/30">Coop · Qualité & Prix</div>
+                        </div>
+                      </div>
+                      <span class="text-[10px] text-red-400 font-mono font-bold">CHF 8.50</span>
+                    </div>
+                    <div class="bg-white/[0.04] border border-white/[0.06] rounded-xl p-3 flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <span class="text-lg">🍫</span>
+                        <div>
+                          <div class="text-[11px] font-semibold text-white/90">Schokolade 100g</div>
+                          <div class="text-[9px] text-white/30">Aldi · <span class="text-emerald-400">-20%</span></div>
+                        </div>
+                      </div>
+                      <span class="text-[10px] text-red-400 font-mono font-bold">CHF 3.20</span>
+                    </div>
+                    <div class="bg-white/[0.04] border border-white/[0.06] rounded-xl p-3 flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <span class="text-lg">🥛</span>
+                        <div>
+                          <div class="text-[11px] font-semibold text-white/90">Vollmilch 1L</div>
+                          <div class="text-[9px] text-white/30">Lidl · Milbona</div>
+                        </div>
+                      </div>
+                      <span class="text-[10px] text-red-400 font-mono font-bold">CHF 1.85</span>
+                    </div>
+                  </div>
+
+                  <!-- Bottom nav -->
+                  <div class="px-6 py-4 flex justify-around border-t border-white/[0.06]">
+                    <div class="flex flex-col items-center gap-0.5">
+                      <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                      <span class="text-[7px] text-red-500 font-bold">Suche</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-0.5">
+                      <svg class="w-4 h-4 text-white/25" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/><line x1="6" y1="17" x2="18" y2="17"/></svg>
+                      <span class="text-[7px] text-white/25 font-bold">Rezepte</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-0.5">
+                      <svg class="w-4 h-4 text-white/25" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                      <span class="text-[7px] text-white/25 font-bold">Listen</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-0.5">
+                      <svg class="w-4 h-4 text-white/25" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                      <span class="text-[7px] text-white/25 font-bold">Familie</span>
+                    </div>
+                  </div>
+
+                  <!-- Home indicator -->
+                  <div class="flex justify-center pb-2">
+                    <div class="w-28 h-1 bg-white/20 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gradient fade to next section -->
+      <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent"></div>
+    </section>
+
+    <!-- ========== STATS BAR ========== -->
+    <section class="relative py-16 border-y border-white/[0.05]">
+      <div class="absolute inset-0 animate-shimmer"></div>
+      <div class="container max-w-5xl mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl font-black text-white tracking-tight">102'374</div>
+            <div class="text-sm text-white/30 mt-1 font-medium" data-i18n="stats.products">Products</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl font-black text-white tracking-tight">3'467</div>
+            <div class="text-sm text-white/30 mt-1 font-medium" data-i18n="stats.recipes">Recipes</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl font-black text-white tracking-tight">102</div>
+            <div class="text-sm text-white/30 mt-1 font-medium" data-i18n="stats.stores">Stores</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl font-black text-white tracking-tight">5</div>
+            <div class="text-sm text-white/30 mt-1 font-medium" data-i18n="stats.retailers">Retailers</div>
+          </div>
+        </div>
+        <p class="text-center text-xs text-white/20 mt-6">
+          Echte Schweizer Produktdaten via <a href="https://openfoodfacts.org" target="_blank" class="underline hover:text-white/40">Open Food Facts</a> · Preise von Migros, Coop, Aldi, Denner & Lidl
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section id="features" class="py-24 md:py-32">
+      <div class="container max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-xs font-semibold tracking-wide text-red-300 mb-6">
+            <span data-i18n="features.badge">Features</span>
+          </div>
+          <h2 class="text-3xl md:text-5xl font-black text-white mb-5 tracking-tight" data-i18n="features.title">
+            Everything you need
+          </h2>
+          <p class="text-lg text-white/40 max-w-2xl mx-auto leading-relaxed" data-i18n="features.desc">
+            From product search to optimized shopping routes — korb.guru combines everything in one app.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Feature 1 -->
+          <div class="group glass rounded-2xl p-6 hover:bg-white/[0.06] transition-all duration-500 hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2" data-i18n="f1.title">Hybrid Product Search</h3>
+            <p class="text-sm text-white/40 leading-relaxed" data-i18n="f1.desc">
+              Semantic and keyword search powered by Qdrant. Find products even when you don't know the exact name.
+            </p>
+          </div>
+          <!-- Feature 2 -->
+          <div class="group glass rounded-2xl p-6 hover:bg-white/[0.06] transition-all duration-500 hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2" data-i18n="f2.title">Price Comparison</h3>
+            <p class="text-sm text-white/40 leading-relaxed" data-i18n="f2.desc">
+              Compare prices across 5 retailers (Migros, Coop, Aldi, Denner, Lidl) at a glance. Savings calculation included.
+            </p>
+          </div>
+          <!-- Feature 3 -->
+          <div class="group glass rounded-2xl p-6 hover:bg-white/[0.06] transition-all duration-500 hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 2h18v20H3zM8 6h8M8 10h8M8 14h5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2" data-i18n="f3.title">Smart Meal Planning</h3>
+            <p class="text-sm text-white/40 leading-relaxed" data-i18n="f3.desc">
+              AI-powered recipe discovery with swipe interface. AI Recipe Discovery for every day.
+            </p>
+          </div>
+          <!-- Feature 4 -->
+          <div class="group glass rounded-2xl p-6 hover:bg-white/[0.06] transition-all duration-500 hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2" data-i18n="f4.title">Shopping Routes</h3>
+            <p class="text-sm text-white/40 leading-relaxed" data-i18n="f4.desc">
+              OSRM-based route planning for pedestrians, cyclists, and drivers to the nearest store.
+            </p>
+          </div>
+          <!-- Feature 5 -->
+          <div class="group glass rounded-2xl p-6 hover:bg-white/[0.06] transition-all duration-500 hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2" data-i18n="f5.title">Share Household</h3>
+            <p class="text-sm text-white/40 leading-relaxed" data-i18n="f5.desc">
+              Shared shopping lists, polls, and budget management for the whole household.
+            </p>
+          </div>
+          <!-- Feature 6 -->
+          <div class="group glass rounded-2xl p-6 hover:bg-white/[0.06] transition-all duration-500 hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h6"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2" data-i18n="f6.title">Auto Shopping Lists</h3>
+            <p class="text-sm text-white/40 leading-relaxed" data-i18n="f6.desc">
+              From recipe to shopping list in one tap. Never forget ingredients again.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section id="how-it-works" class="py-24 md:py-32 relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-red-950/5 to-transparent"></div>
+      <div class="relative container max-w-5xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-xs font-semibold tracking-wide text-red-300 mb-6">
+            <span data-i18n="how.badge">How it works</span>
+          </div>
+          <h2 class="text-3xl md:text-5xl font-black text-white mb-5 tracking-tight" data-i18n="how.title">
+            Easy as 1-2-3
+          </h2>
+          <p class="text-lg text-white/40 max-w-xl mx-auto leading-relaxed" data-i18n="how.desc">
+            Three steps from recipe to finished shopping.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 md:gap-6">
+          <!-- Step 1 -->
+          <div class="relative text-center group">
+            <!-- Connector line (desktop) -->
+            <div class="hidden md:block absolute top-16 left-[60%] w-[80%] h-px bg-gradient-to-r from-red-500/30 to-transparent"></div>
+            <div class="relative inline-flex items-center justify-center w-28 h-28 mb-6 mx-auto">
+              <div class="absolute inset-0 bg-gradient-to-br from-red-600 to-red-800 rounded-2xl rotate-3 group-hover:rotate-6 transition-transform duration-500 shadow-lg shadow-red-600/20"></div>
+              <div class="relative z-10 flex items-center justify-center w-full h-full">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              </div>
+              <span class="absolute -top-2 -right-2 w-8 h-8 bg-white text-[#0a0a0a] text-xs font-black rounded-full flex items-center justify-center shadow-lg z-20">01</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3" data-i18n="how.s1.title">Search</h3>
+            <p class="text-sm text-white/40 leading-relaxed max-w-xs mx-auto" data-i18n="how.s1.desc">
+              Find products and recipes with intelligent search across Migros, Coop, Aldi, Denner & Lidl.
+            </p>
+          </div>
+          <!-- Step 2 -->
+          <div class="relative text-center group">
+            <div class="hidden md:block absolute top-16 left-[60%] w-[80%] h-px bg-gradient-to-r from-red-500/30 to-transparent"></div>
+            <div class="relative inline-flex items-center justify-center w-28 h-28 mb-6 mx-auto">
+              <div class="absolute inset-0 bg-gradient-to-br from-red-600 to-red-800 rounded-2xl -rotate-2 group-hover:-rotate-6 transition-transform duration-500 shadow-lg shadow-red-600/20"></div>
+              <div class="relative z-10 flex items-center justify-center w-full h-full">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </div>
+              <span class="absolute -top-2 -right-2 w-8 h-8 bg-white text-[#0a0a0a] text-xs font-black rounded-full flex items-center justify-center shadow-lg z-20">02</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3" data-i18n="how.s2.title">Plan</h3>
+            <p class="text-sm text-white/40 leading-relaxed max-w-xs mx-auto" data-i18n="how.s2.desc">
+              Create your weekly plan and automatically generate shopping lists.
+            </p>
+          </div>
+          <!-- Step 3 -->
+          <div class="relative text-center group">
+            <div class="relative inline-flex items-center justify-center w-28 h-28 mb-6 mx-auto">
+              <div class="absolute inset-0 bg-gradient-to-br from-red-600 to-red-800 rounded-2xl rotate-1 group-hover:rotate-6 transition-transform duration-500 shadow-lg shadow-red-600/20"></div>
+              <div class="relative z-10 flex items-center justify-center w-full h-full">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              </div>
+              <span class="absolute -top-2 -right-2 w-8 h-8 bg-white text-[#0a0a0a] text-xs font-black rounded-full flex items-center justify-center shadow-lg z-20">03</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3" data-i18n="how.s3.title">Shop</h3>
+            <p class="text-sm text-white/40 leading-relaxed max-w-xs mx-auto" data-i18n="how.s3.desc">
+              Optimized route, best prices, shared list — shopping has never been easier.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TECH STACK ========== -->
+    <section class="py-24 md:py-32 border-t border-white/[0.05]">
+      <div class="container max-w-5xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-xs font-semibold tracking-wide text-red-300 mb-6">
+            <span data-i18n="tech.badge">Technology</span>
+          </div>
+          <h2 class="text-3xl md:text-5xl font-black text-white mb-5 tracking-tight" data-i18n="tech.title">
+            Tech Stack
+          </h2>
+          <p class="text-lg text-white/40 max-w-xl mx-auto leading-relaxed" data-i18n="tech.desc">
+            Modern technologies for a seamless experience.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4">
+          <div class="glass rounded-xl px-5 py-3.5 flex items-center gap-3 hover:bg-white/[0.06] transition-all duration-300">
+            <img src="https://cdn.simpleicons.org/expo/white" alt="Expo" class="w-6 h-6" loading="lazy" />
+            <span class="font-semibold text-white/80">Expo</span>
+          </div>
+          <div class="glass rounded-xl px-5 py-3.5 flex items-center gap-3 hover:bg-white/[0.06] transition-all duration-300">
+            <img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI" class="w-6 h-6" loading="lazy" />
+            <span class="font-semibold text-white/80">FastAPI</span>
+          </div>
+          <div class="glass rounded-xl px-5 py-3.5 flex items-center hover:bg-white/[0.06] transition-all duration-300">
+            <img src="/logo-qdrant.svg" alt="Qdrant" class="h-6" loading="lazy" />
+          </div>
+          <div class="glass rounded-xl px-5 py-3.5 flex items-center hover:bg-white/[0.06] transition-all duration-300">
+            <img src="/logo-apify.svg" alt="Apify" class="h-6" loading="lazy" />
+          </div>
+          <div class="glass rounded-xl px-5 py-3.5 flex items-center gap-3 hover:bg-white/[0.06] transition-all duration-300">
+            <img src="https://cdn.simpleicons.org/postgresql/4169E1" alt="PostgreSQL" class="w-6 h-6" loading="lazy" />
+            <span class="font-semibold text-white/80">PostgreSQL</span>
+          </div>
+          <div class="glass rounded-xl px-5 py-3.5 flex items-center gap-3 hover:bg-white/[0.06] transition-all duration-300">
+            <img src="https://cdn.simpleicons.org/openstreetmap/7EBC6F" alt="OSRM" class="w-6 h-6" loading="lazy" />
+            <span class="font-semibold text-white/80">OSRM</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="py-24 md:py-32 relative overflow-hidden">
+      <!-- Background glow -->
+      <div class="absolute inset-0 bg-gradient-to-br from-red-950/30 via-[#0a0a0a] to-red-950/20"></div>
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[120px]"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-red-800/8 rounded-full blur-[100px]"></div>
+
+      <div class="relative z-10 container max-w-4xl mx-auto px-6 text-center">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center mx-auto mb-8 shadow-lg shadow-red-600/30">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-5 tracking-tight" data-i18n="cta.title">
+          Ready to shop smarter?
+        </h2>
+        <p class="text-lg text-white/40 max-w-xl mx-auto mb-10 leading-relaxed" data-i18n="cta.desc">
+          korb.guru makes meal planning and grocery shopping in Switzerland easier than ever.
+        </p>
+        <a
+          href="#features"
+          class="inline-flex items-center gap-3 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold rounded-xl px-10 py-4 text-base transition-all duration-300 shadow-lg shadow-red-600/30 hover:shadow-red-500/50 hover:-translate-y-0.5"
+        >
+          <span data-i18n="cta.btn">Get started</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="py-10 border-t border-white/[0.05]">
+      <div class="container max-w-5xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <span class="font-bold text-lg text-white/80">korb.guru</span>
+          </div>
+          <div class="flex items-center gap-4 text-xs text-white/25">
+            <span>Built at GenAI Zurich Hackathon 2026</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</Layout>

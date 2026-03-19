@@ -1,0 +1,56 @@
+{
+  "actorSpecification": 1,
+  "name": "swiss-grocery-scraper",
+  "title": "Swiss Grocery Scraper",
+  "description": "Scrapes weekly offers from Swiss grocery retailers (Aldi, Migros, Coop, Denner, Lidl). Uses Crawlee + Docling for web and PDF extraction. Outputs structured product data with prices, discounts, and categories.",
+  "version": "0.4",
+  "buildTag": "latest",
+  "dockerfile": "./Dockerfile",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "Scraped Products",
+      "description": "Product offers scraped from Swiss grocery retailer websites and flyers.",
+      "fields": {
+        "type": "object",
+        "properties": {
+          "retailer": {
+            "type": "string",
+            "title": "Retailer",
+            "description": "Retailer brand name (aldi, migros, coop, denner, lidl)"
+          },
+          "name": {
+            "type": "string",
+            "title": "Product Name",
+            "description": "Name of the product"
+          },
+          "price": {
+            "type": "number",
+            "title": "Price (CHF)",
+            "description": "Product price in Swiss Francs"
+          },
+          "discount_pct": {
+            "type": "number",
+            "title": "Discount %",
+            "description": "Discount percentage if available"
+          },
+          "image_url": {
+            "type": "string",
+            "title": "Image URL",
+            "description": "URL to product image"
+          },
+          "category": {
+            "type": "string",
+            "title": "Category",
+            "description": "Product category (e.g. offer)"
+          },
+          "region": {
+            "type": "string",
+            "title": "Region",
+            "description": "Swiss region for the offer"
+          }
+        }
+      }
+    }
+  }
+}

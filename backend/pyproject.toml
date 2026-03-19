@@ -1,0 +1,60 @@
+[project]
+name = "korb-guru-backend"
+version = "0.3.0"
+description = "korb.guru — FastAPI backend + Swiss grocery crawlers"
+requires-python = ">=3.11"
+dependencies = [
+    # API
+    "alembic>=1.13.0",
+    "email-validator>=2.1.0",
+    "asyncpg>=0.29.0",
+    "fastapi>=0.115.0",
+    "fastembed>=0.4.0",
+    "httpx>=0.27.0",
+    "psycopg2-binary>=2.9.9",
+    "pydantic-settings>=2.6.0",
+    "posthog>=3.0.0",
+    "pyjwt[crypto]>=2.8.0",
+    "python-dotenv>=1.0.0",
+    "qdrant-client>=1.12.0",
+    "sqlalchemy[asyncio]>=2.0.0",
+    "uvicorn[standard]>=0.32.0",
+    # Crawlers (smartcart)
+    "beautifulsoup4>=4.12,<5",
+    "playwright>=1.49,<2",
+    "docling>=2.70,<3",
+    "pdfplumber>=0.11,<1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src", "crawler"]
+
+[dependency-groups]
+dev = [
+    "async-factory-boy>=1.0.0",
+    "httpx>=0.27.0",
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.8.0",
+    "testcontainers[postgres]>=4.0.0",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/services/demo_data.py" = ["E501"]
+"src/services/recipe_data.py" = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+asyncio_mode = "auto"

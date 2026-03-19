@@ -1,0 +1,47 @@
+{
+  "title": "Recipe Collector Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "sources": {
+      "title": "Sources",
+      "type": "array",
+      "description": "Which recipe sources to collect from (recipenlg, rss)",
+      "items": {
+        "type": "string"
+      },
+      "default": ["recipenlg", "rss"],
+      "sectionCaption": "Collection Options",
+      "sectionDescription": "Configure which sources and filters to use for recipe collection.",
+      "editor": "stringList"
+    },
+    "maxRecipes": {
+      "title": "Max Recipes",
+      "type": "integer",
+      "description": "Maximum number of recipes to collect across all sources",
+      "default": 100,
+      "minimum": 1,
+      "maximum": 10000,
+      "editor": "number"
+    },
+    "categories": {
+      "title": "Categories",
+      "type": "array",
+      "description": "Filter by recipe categories (e.g. protein, veggie, carb, dessert). Leave empty for all.",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "editor": "stringList"
+    },
+    "language": {
+      "title": "Language",
+      "type": "string",
+      "description": "Preferred language for recipes",
+      "enum": ["de", "en", "fr"],
+      "default": "de",
+      "editor": "select"
+    }
+  },
+  "required": ["sources"]
+}

@@ -1,0 +1,4 @@
+apify
+apify-client
+qdrant-client[fastembed]
+httpx

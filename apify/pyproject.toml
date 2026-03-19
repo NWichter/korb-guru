@@ -1,0 +1,15 @@
+[project]
+name = "korb-guru-crawler-apify"
+version = "0.1.0"
+description = "Apify orchestrator for Swiss grocery scraping"
+requires-python = ">=3.12"
+dependencies = [
+    "apify-client>=1.8,<2",
+    "qdrant-client[fastembed]>=1.17,<2",
+    "httpx>=0.28,<0.29",
+    "pydantic>=2.10,<3",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

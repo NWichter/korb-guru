@@ -1,0 +1,10 @@
+{
+  "actorSpecification": 1,
+  "name": "open-food-facts-swiss",
+  "title": "Swiss Open Food Facts Importer",
+  "description": "Imports Swiss product data from Open Food Facts API. Fetches products sold in Switzerland with nutritional info, allergens, and Nutri-Score. Outputs structured product data for ingestion.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "dockerfile": "./Dockerfile",
+  "storages": {}
+}

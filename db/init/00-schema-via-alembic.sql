@@ -1,0 +1,2 @@
+-- Schema is managed by Alembic (apps/api/alembic). Run pnpm db:migrate from repo root after first start.
+-- Seed: apps/postgres/seed/, run pnpm db:seed:postgres.

@@ -1,0 +1,73 @@
+{
+  "title": "Shopping Agent Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "query": {
+      "title": "Shopping Query",
+      "type": "string",
+      "description": "Natural language shopping query (e.g., 'Zutaten für Pasta Carbonara unter CHF 15')",
+      "editor": "textfield"
+    },
+    "budget": {
+      "title": "Budget (CHF)",
+      "type": "number",
+      "description": "Maximum budget in CHF",
+      "default": 50.0,
+      "editor": "number"
+    },
+    "preferred_retailers": {
+      "title": "Preferred Retailers",
+      "type": "array",
+      "description": "Preferred retailers (aldi, migros, coop, denner, lidl)",
+      "items": {
+        "type": "string"
+      },
+      "default": ["migros", "coop", "aldi", "denner", "lidl"],
+      "editor": "stringList"
+    },
+    "region": {
+      "title": "Region",
+      "type": "string",
+      "description": "Swiss region",
+      "enum": ["zurich", "bern", "basel"],
+      "default": "zurich",
+      "editor": "select"
+    },
+    "qdrant_url": {
+      "title": "Qdrant URL",
+      "type": "string",
+      "description": "Qdrant Cloud cluster URL",
+      "editor": "textfield"
+    },
+    "qdrant_api_key": {
+      "title": "Qdrant API Key",
+      "type": "string",
+      "description": "Qdrant Cloud API key",
+      "isSecret": true,
+      "editor": "textfield"
+    },
+    "openrouter_api_key": {
+      "title": "OpenRouter API Key",
+      "type": "string",
+      "description": "OpenRouter API key for LLM access",
+      "isSecret": true,
+      "editor": "textfield"
+    },
+    "scrape_fresh": {
+      "title": "Scrape Fresh Data",
+      "type": "boolean",
+      "description": "Run swiss-grocery-scraper for fresh data before searching",
+      "default": false,
+      "editor": "checkbox"
+    },
+    "find_stores": {
+      "title": "Find Nearby Stores",
+      "type": "boolean",
+      "description": "Use Google Maps to find nearby stores",
+      "default": false,
+      "editor": "checkbox"
+    }
+  },
+  "required": ["query"]
+}

@@ -1,0 +1,9 @@
+{
+  "actorSpecification": 1,
+  "name": "recipe-collector",
+  "title": "Recipe Collector",
+  "description": "Collects recipes from open sources (RSS feeds, RecipeNLG) and formats them for korb.guru's meal planning system.",
+  "version": "0.1",
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile"
+}

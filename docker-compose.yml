@@ -1,0 +1,26 @@
+name: korb-guru
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "${API_PORT:-8001}:8001"
+    env_file: .env
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      QDRANT_URL: ${QDRANT_URL}
+      QDRANT_API_KEY: ${QDRANT_API_KEY}
+      QDRANT_MODE: cloud
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    env_file: .env
+    depends_on:
+      - backend
+
+  website:
+    build: ./website
+    ports:
+      - "3002:80"
